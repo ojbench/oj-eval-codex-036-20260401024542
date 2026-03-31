@@ -259,6 +259,12 @@ int main() {
             if (cmd == "or") bs |= other;
             else if (cmd == "and") bs &= other;
             else bs ^= other;
+        } else if (cmd == "setall") {
+            bs.set();
+        } else if (cmd == "resetall") {
+            bs.reset();
+        } else if (cmd == "flipall") {
+            bs.flip();
         } else if (cmd == "shl") {
             std::size_t k; std::cin >> k; bs <<= k;
         } else if (cmd == "shr") {
