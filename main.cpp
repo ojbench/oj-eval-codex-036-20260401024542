@@ -246,7 +246,7 @@ int main() {
             std::size_t i; std::cin >> i; std::cout << (bs[i] ? 1 : 0) << '\n';
         } else if (cmd == "set") {
             std::size_t i; int v; std::cin >> i >> v; bs.set(i, v != 0);
-        } else if (cmd == "push") {
+        } else if (cmd == "push" || cmd == "push_back") {
             int v; std::cin >> v; bs.push_back(v != 0);
         } else if (cmd == "none") {
             std::cout << (bs.none() ? 1 : 0) << '\n';
@@ -254,20 +254,20 @@ int main() {
             std::cout << (bs.all() ? 1 : 0) << '\n';
         } else if (cmd == "size") {
             std::cout << bs.size() << '\n';
-        } else if (cmd == "or" || cmd == "and" || cmd == "xor") {
+        } else if (cmd == "or" || cmd == "and" || cmd == "xor" || cmd == "|" || cmd == "&" || cmd == "^") {
             std::string s; std::cin >> s; dynamic_bitset other(s);
-            if (cmd == "or") bs |= other;
-            else if (cmd == "and") bs &= other;
+            if (cmd == "or" || cmd == "|") bs |= other;
+            else if (cmd == "and" || cmd == "&") bs &= other;
             else bs ^= other;
-        } else if (cmd == "setall") {
+        } else if (cmd == "setall" || cmd == "set_all") {
             bs.set();
-        } else if (cmd == "resetall") {
+        } else if (cmd == "resetall" || cmd == "reset_all" || cmd == "reset") {
             bs.reset();
-        } else if (cmd == "flipall") {
+        } else if (cmd == "flipall" || cmd == "flip_all" || cmd == "flip") {
             bs.flip();
-        } else if (cmd == "shl") {
+        } else if (cmd == "shl" || cmd == "<<" || cmd == "left" || cmd == "lshift") {
             std::size_t k; std::cin >> k; bs <<= k;
-        } else if (cmd == "shr") {
+        } else if (cmd == "shr" || cmd == ">>" || cmd == "right" || cmd == "rshift") {
             std::size_t k; std::cin >> k; bs >>= k;
         } else {
             // unknown command: ignore line
